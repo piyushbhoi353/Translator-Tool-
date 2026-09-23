@@ -33,6 +33,8 @@ async function translateText() {
 
     const source = sourceLanguage.value;
     const target = targetLanguage.value;
+    const apisource = source === "auto" ?
+        "autodetect" : source;
 
     errorMessage.textContent = "";
 
@@ -61,7 +63,7 @@ async function translateText() {
 
         // MyMemory API
         const url =
-            `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${source}|${target}`;
+            `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=${apisource}|${target}`;
 
         const response = await fetch(url);
 
